@@ -1,6 +1,8 @@
 package eidi2.sose25.weber.felix.sheet02.ex02;
 
-public class DynamicArray{
+import java.util.Iterator;
+
+public class DynamicArray implements Iterable<Integer> {
 
     private int[] array;
     private int nextFree;
@@ -96,5 +98,10 @@ public class DynamicArray{
         sb.append("]");
 
         return new String(sb);
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new DynamicArrayIterator(this);
     }
 }
