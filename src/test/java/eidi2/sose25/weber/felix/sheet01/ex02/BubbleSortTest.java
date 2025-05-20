@@ -15,6 +15,17 @@ public class BubbleSortTest {
     }
 
     @Test
+    public void test() {
+        int[] orginalArray = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] kopiertesArray = orginalArray.clone();
+
+        orginalArray[0] = 99;
+
+        System.out.println(Arrays.toString(orginalArray));
+        System.out.println(Arrays.toString(kopiertesArray));
+    }
+
+    @Test
     public void testEmptyArray() {
         int[] array = new int[0];
         HelloWorld.sort(array);

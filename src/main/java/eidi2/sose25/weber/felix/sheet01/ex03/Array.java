@@ -9,7 +9,7 @@ public abstract class Array{
             throw new ArrayIndexOutOfBoundsException();
         }
 
-        array[nextFreeIndex++] = val;
+        array[nextFreeIndex] = val;
         nextFreeIndex++;
     }
 
