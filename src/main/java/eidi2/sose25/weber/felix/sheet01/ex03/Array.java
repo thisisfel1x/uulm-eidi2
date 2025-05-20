@@ -1,9 +1,9 @@
 package eidi2.sose25.weber.felix.sheet01.ex03;
 
-public abstract class Array{
+public abstract class Array {
     protected int[] array;
     protected int nextFreeIndex = 0;
-    
+
     public void add(int val) {
         if (nextFreeIndex >= array.length) {
             throw new ArrayIndexOutOfBoundsException();
@@ -37,9 +37,9 @@ public abstract class Array{
         // Reset last element and decrease next free index by 1
         array[nextFreeIndex - 1] = 0;
         nextFreeIndex--;
-        
+
     }
-    
+
     @Override
     public String toString() {
 

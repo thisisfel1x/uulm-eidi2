@@ -1,8 +1,7 @@
-
 package eidi2.sose25.weber.felix.sheet01.ex03;
 
 public class DynamicArray extends Array {
-    
+
     public DynamicArray() {
         this.array = new int[10];
         this.nextFreeIndex = 0;

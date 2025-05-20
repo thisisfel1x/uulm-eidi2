@@ -5,13 +5,13 @@ import java.util.Iterator;
 
 /**
  * Interface for the lecture EidI2 in the summer term of 2020.<br>
- * 
+ * <p>
  * This interface defines methods for unidirectional lists, mostly derived from <code>java.util.List<T></code>.
- * @author h3ssto
  *
  * @param <T>
+ * @author h3ssto
  */
-public interface UniList<T> extends Iterable<T>{
+public interface UniList<T> extends Iterable<T> {
 
     boolean add(T value);
 
@@ -34,7 +34,7 @@ public interface UniList<T> extends Iterable<T>{
     void clear();
 
     T remove(int index);
-    
+
     boolean remove(T value);
 
     @Override

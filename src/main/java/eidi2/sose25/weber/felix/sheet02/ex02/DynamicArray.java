@@ -35,10 +35,10 @@ public class DynamicArray implements Iterable<Integer> {
 
     public void resize(int newLength) {
 
-    	if(newLength < 0) {
-    		throw new IllegalArgumentException("newLength < 0");
-    	}
-    	
+        if (newLength < 0) {
+            throw new IllegalArgumentException("newLength < 0");
+        }
+
         int[] newArray = new int[newLength];
 
         for (int i = 0; i < Math.min(nextFree, newArray.length); i++) {
@@ -48,7 +48,7 @@ public class DynamicArray implements Iterable<Integer> {
         nextFree = Math.min(nextFree, newArray.length);
         array = newArray;
     }
-    
+
     public void add(int val) {
 
         if (nextFree == array.length) {
@@ -57,11 +57,11 @@ public class DynamicArray implements Iterable<Integer> {
 
         array[nextFree++] = val;
     }
-    
+
     public int size() {
         return nextFree;
     }
-    
+
     public int get(int index) {
 
         if (index < 0 || index >= nextFree) {
@@ -73,7 +73,7 @@ public class DynamicArray implements Iterable<Integer> {
 
     public void remove(int index) {
         if (index < 0 || index >= nextFree) {
-        	throw new ArrayIndexOutOfBoundsException();
+            throw new ArrayIndexOutOfBoundsException();
         }
 
         for (int i = index; i < nextFree - 1; i++) {

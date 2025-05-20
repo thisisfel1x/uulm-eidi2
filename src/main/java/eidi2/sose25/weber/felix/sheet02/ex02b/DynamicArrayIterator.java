@@ -1,7 +1,5 @@
 package eidi2.sose25.weber.felix.sheet02.ex02b;
 
-import eidi2.sose25.weber.felix.sheet02.ex02b.DynamicArray;
-
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 

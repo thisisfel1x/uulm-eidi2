@@ -23,9 +23,7 @@ public class CalculatorCtrl implements ActionListener {
                 currentInput += cmd;
             }
             Calculator.setContent(currentInput);
-        }
-
-        else if (cmd.equals(".")) {
+        } else if (cmd.equals(".")) {
             if (!isDecimalEntered) {
                 if (isNewInput || currentInput.isEmpty()) {
                     currentInput = "0.";
@@ -36,22 +34,16 @@ public class CalculatorCtrl implements ActionListener {
                 isNewInput = false;
                 Calculator.setContent(currentInput);
             }
-        }
-
-        else if (cmd.equals("+") || cmd.equals("-") || cmd.equals("x") || cmd.equals("/")) {
+        } else if (cmd.equals("+") || cmd.equals("-") || cmd.equals("x") || cmd.equals("/")) {
             compute();
             operator = cmd;
             isNewInput = true;
-        }
-
-        else if (cmd.equals("=")) {
+        } else if (cmd.equals("=")) {
             compute();
             Calculator.setContent(String.valueOf(currentValue));
             operator = "";
             isNewInput = true;
-        }
-
-        else if (cmd.equals("Clear")) {
+        } else if (cmd.equals("Clear")) {
             currentInput = "";
             operator = "";
             currentValue = 0;

@@ -2,9 +2,18 @@ package eidi2.sose25.weber.felix.sheet01.ex03;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DynamicArrayTest {
+
+    private static DynamicArray init() {
+        DynamicArray array = new DynamicArray();
+        for (int i = 0; i < 10; i++) {
+            array.add(i + 1);
+        }
+        return array;
+    }
 
     @Test
     public void testValuedConstructor() {
@@ -73,12 +82,4 @@ public class DynamicArrayTest {
         assertThrows(ArrayIndexOutOfBoundsException.class, () -> array.get(10));
     }
 
-    private static DynamicArray init() {
-        DynamicArray array = new DynamicArray();
-        for (int i = 0; i < 10; i++) {
-            array.add(i + 1);
-        }
-        return array;
-    }
-    
 }

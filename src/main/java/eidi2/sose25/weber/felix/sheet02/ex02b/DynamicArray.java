@@ -1,6 +1,5 @@
 package eidi2.sose25.weber.felix.sheet02.ex02b;
 
-import eidi2.sose25.weber.felix.sheet02.ex02b.DynamicArrayIterator;
 import eidi2.sose25.weber.felix.sheet02.ex02.UniList;
 
 import java.util.Iterator;

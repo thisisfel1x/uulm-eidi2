@@ -1,18 +1,14 @@
 package eidi2.sose25.weber.felix.sheet02.ex01;
 
-import java.awt.Dimension;
-import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
-
 import javax.swing.*;
+import java.awt.*;
 
 
 public class Calculator {
 
-	// Names of all buttons on a basic calculator
-	private final static String[] BUTTON_NAMES = {"(", ")", "Undo", "Clear", "7", "8", "9", "/", "4", "5", "6", "x", "1", "2", "3", "-", "0", ".", "=", "+"};
-	
+    // Names of all buttons on a basic calculator
+    private final static String[] BUTTON_NAMES = {"(", ")", "Undo", "Clear", "7", "8", "9", "/", "4", "5", "6", "x", "1", "2", "3", "-", "0", ".", "=", "+"};
+
     private static JTextField output = null;
 
     public static void main(String[] args) {
@@ -54,8 +50,8 @@ public class Calculator {
         frame.pack();
         frame.setVisible(true);
     }
-    
-    public static void setContent(String value){
+
+    public static void setContent(String value) {
         output.setText(value);
     }
 }
