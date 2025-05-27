@@ -1,6 +1,7 @@
 package eidi2.sose25.weber.felix.lesson.uml;
 
 import eidi2.sose25.weber.felix.lesson.uml.util.IStoreable;
+import eidi2.sose25.weber.felix.lesson.uml.util.Vault;
 
 public class Bank {
     private final VaultingManager REGISTRY;
