@@ -2,22 +2,25 @@ package eidi2.sose25.weber.felix.sheet04.ex01;
 
 import java.util.Iterator;
 
-public class DynamicArray implements UniList<Integer> {
+public class DynamicArray<T> implements UniList<T> {
 
     private int nextFree = 0;
-    private int[] array;
+    private T[] array;
 
     //constructors
+    @SuppressWarnings("unchecked")
     public DynamicArray() {
-        array = new int[10];
+        array = (T[]) new Object[10];
     }
 
+    @SuppressWarnings("unchecked")
     public DynamicArray(int n) {
-        array = new int[n];
+        array = (T[]) new Object[n];
     }
 
-    public DynamicArray(int... values) {
-        array = new int[values.length];
+    @SuppressWarnings("unchecked")
+    public DynamicArray(T... values) {
+        array = (T[]) new Object[values.length];
 
         System.arraycopy(values, 0, array, 0, values.length);
         nextFree = values.length;
@@ -25,7 +28,7 @@ public class DynamicArray implements UniList<Integer> {
 
     //implementation of methods from UniList<Integer>
     @Override
-    public boolean add(Integer value) {
+    public boolean add(T value) {
 
         if (nextFree >= array.length) {
             resize(Math.max(array.length * 2, 1));
@@ -37,7 +40,7 @@ public class DynamicArray implements UniList<Integer> {
     }
 
     @Override
-    public void add(int index, Integer value) {
+    public void add(int index, T value) {
         if (index < 0 || index > size()) {
             throw new IndexOutOfBoundsException();
         }
@@ -46,7 +49,7 @@ public class DynamicArray implements UniList<Integer> {
             //also catches the case of an empty dynamic array
             add(value);
         } else {
-            int last = array[nextFree - 1];
+            T last = array[nextFree - 1];
             for (int i = nextFree - 1; i > index; i--) {
                 array[i] = array[i - 1];
             }
@@ -57,19 +60,19 @@ public class DynamicArray implements UniList<Integer> {
 
 
     @Override
-    public Integer set(int index, Integer value) {
+    public T set(int index, T value) {
         if (index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException();
         }
 
-        Integer old = array[index];
+        T old = array[index];
         array[index] = value;
 
         return old;
     }
 
     @Override
-    public Integer get(int index) {
+    public T get(int index) {
         if (index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException();
         }
@@ -78,7 +81,7 @@ public class DynamicArray implements UniList<Integer> {
     }
 
     @Override
-    public int indexOf(Integer value) {
+    public int indexOf(T value) {
         for (int i = 0; i < array.length; i++) {
             if (array[i] == value) {
                 return i;
@@ -89,7 +92,7 @@ public class DynamicArray implements UniList<Integer> {
     }
 
     @Override
-    public int lastIndexOf(Integer value) {
+    public int lastIndexOf(T value) {
         int index = -1;
 
         for (int i = 0; i < array.length; i++) {
@@ -102,8 +105,8 @@ public class DynamicArray implements UniList<Integer> {
     }
 
     @Override
-    public boolean contains(Integer value) {
-        for (int x : array) {
+    public boolean contains(T value) {
+        for (T x : array) {
             if (x == value) {
                 return true;
             }
@@ -129,25 +132,25 @@ public class DynamicArray implements UniList<Integer> {
     }
 
     @Override
-    public Integer remove(int index) {
+    public T remove(int index) {
         if (index < 0 || index >= nextFree) {
             throw new ArrayIndexOutOfBoundsException();
         }
 
-        Integer old = array[index];
+        T old = array[index];
 
         for (int i = index; i < nextFree - 1; i++) {
             array[i] = array[i + 1];
         }
 
-        array[nextFree - 1] = 0;
+        array[nextFree - 1] = null;
         nextFree--;
 
         return old;
     }
 
     @Override
-    public boolean remove(Integer value) {
+    public boolean remove(T value) {
         for (int i = 0; i < array.length; i++) {
             if (array[i] == value) {
                 remove(i);
@@ -159,18 +162,19 @@ public class DynamicArray implements UniList<Integer> {
     }
 
     @Override
-    public Iterator<Integer> iterator() {
+    public Iterator<T> iterator() {
         return new DynamicArrayIterator(this);
     }
 
     //helper methods
+    @SuppressWarnings("unchecked")
     public void resize(int newLength) {
 
         if (newLength < 0) {
             throw new IllegalArgumentException("newLength < 0");
         }
 
-        int[] newArray = new int[newLength];
+        T[] newArray = (T[]) new Object[newLength];
 
         for (int i = 0; i < Math.min(nextFree, newArray.length); i++) {
             newArray[i] = array[i];
