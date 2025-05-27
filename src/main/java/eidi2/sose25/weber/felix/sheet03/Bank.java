@@ -10,6 +10,29 @@ public class Bank {
         this.bankAccounts = new ArrayList<>();
     }
 
+    public int highestCustomerId() {
+        int id = 0;
+        for (BankAccount bankAccount : bankAccounts) {
+            int currentCustomerId = bankAccount.getCustomerID();
+            if (currentCustomerId > id) {
+                id = currentCustomerId;
+            }
+        }
+        return id;
+    }
+
+    public int test() {
+        int id = 0;
+        for (int i = 0; i < bankAccounts.size(); i++) {
+            BankAccount bankAccount = bankAccounts.get(i);
+            int currentCustomerId = bankAccount.getCustomerID();
+            if (currentCustomerId > id) {
+                id = currentCustomerId;
+            }
+        }
+        return id;
+    }
+
     public int getHighestCustomerId() {
         return this.bankAccounts.stream()
                 .max(Comparator.comparingInt(BankAccount::getCustomerID))

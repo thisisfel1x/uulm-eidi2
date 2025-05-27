@@ -2,6 +2,8 @@ package eidi2.sose25.weber.felix.sheet02.ex01;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class Calculator {
@@ -41,6 +43,12 @@ public class Calculator {
 
         for (String name : BUTTON_NAMES) {
             JButton button = new JButton(name);
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    System.out.println(e.getActionCommand());
+                }
+            });
             button.addActionListener(ctrl);
             button.setActionCommand(name);
             panel.add(button);
