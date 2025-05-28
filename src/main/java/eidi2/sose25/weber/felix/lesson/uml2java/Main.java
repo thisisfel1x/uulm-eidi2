@@ -19,10 +19,12 @@ public class Main {
             if (tier instanceof Elefant) {
                 Elefant current = (Elefant) tier;
                 current.trompeten(200);
+                System.out.println("Wir haben einen Elefant!");
             } else if (tier instanceof Tausendfuessler) {
             // } else if (tier instanceof Tausendfuessler current) { -> new syntax
                 Tausendfuessler current = (Tausendfuessler) tier;
                 current.beineEntheddern();
+                System.out.println("Wir haben einen Tausendfuessler!");
             } else {
                 System.out.println("Unknown animal " + tier);
             }
