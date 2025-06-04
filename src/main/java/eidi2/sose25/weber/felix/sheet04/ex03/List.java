@@ -30,7 +30,7 @@ public class List<T> {
         if (this.head == null) {
             this.head = newElement;
         } else {
-            this.tail.setNext(newElement);
+            this.head.setNext(newElement);
         }
         this.tail = newElement;
 
