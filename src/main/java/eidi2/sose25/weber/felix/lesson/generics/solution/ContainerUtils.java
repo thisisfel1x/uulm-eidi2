@@ -1,5 +1,7 @@
 package eidi2.sose25.weber.felix.lesson.generics.solution;
 
+import java.util.Objects;
+
 /**
  * Hilfsklasse mit statischen Methoden für Container.
  */
@@ -26,7 +28,7 @@ public class ContainerUtils {
     public static boolean isEqual(Container<?> c1, Container<?> c2) {
         Object e1 = c1.get();
         Object e2 = c2.get();
-        return (e1 == null) ? (e2 == null) : e1.equals(e2);
+        return Objects.equals(e1, e2);
     }
 }
 
