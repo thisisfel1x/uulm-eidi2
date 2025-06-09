@@ -33,8 +33,13 @@ public class Vault<T extends IStoreable> {
 	}
 	
 	public int removeValue(int value) {
-		//TODO
-		return 0;
+		for (T content : this.contents) {
+			if (content.value() == value) {
+				contents.remove(content);
+				break;
+			}
+		}
+		return this.getValue();
 	}
 	
 }
