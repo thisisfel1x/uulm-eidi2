@@ -57,4 +57,12 @@ public class Stack<T> implements BetterStack<T> {
     public int size() {
         return this.size;
     }
+
+    @Override
+    public String toString() {
+        return "Stack{" +
+                "top=" + top +
+                ", size=" + size +
+                '}';
+    }
 }
