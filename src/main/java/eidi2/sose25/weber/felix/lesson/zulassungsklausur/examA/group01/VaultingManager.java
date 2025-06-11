@@ -9,13 +9,9 @@ import java.util.LinkedList;
 
 public class VaultingManager {
 	final List<Tuple<Bank, List<Vault<IStoreable>>>> banksAndVaults = new LinkedList<>();
-	
+
 	Tuple<Bank, List<Vault<IStoreable>>> findBankTuple(Bank bankToFind) {
-		for (Tuple<Bank, List<Vault<IStoreable>>> banksAndVault : this.banksAndVaults) {
-			if (banksAndVault.first.equals(bankToFind)) {
-				return banksAndVault;
-			}
-		}
+		// TODO
 		return null;
 	}
 	
@@ -39,20 +35,7 @@ public class VaultingManager {
 	}
 	
 	public boolean removeValueFromBankVault(Bank bankToFind, long vaultID, int valueToRemove) {
-		Tuple<Bank, List<Vault<IStoreable>>> bankAndVault = findBankTuple(bankToFind);
-
-		if(bankAndVault == null) {
-			return false;
-		}
-
-		for (Vault<IStoreable> iStoreableVault : bankAndVault.second) {
-			if (iStoreableVault.getID() == vaultID) {
-				int oldValue = iStoreableVault.getValue();
-				int newValue = iStoreableVault.removeValue(valueToRemove);
-				return newValue != oldValue;
-			}
-		}
-
+		// TODO
 		return false;
 	}
 	
