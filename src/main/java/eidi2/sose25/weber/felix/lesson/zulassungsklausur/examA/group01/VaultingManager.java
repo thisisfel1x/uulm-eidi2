@@ -10,8 +10,29 @@ import java.util.LinkedList;
 public class VaultingManager {
 	final List<Tuple<Bank, List<Vault<IStoreable>>>> banksAndVaults = new LinkedList<>();
 
+	public void test() {
+		for (int i = 0; i < banksAndVaults.size(); i++) {
+			Tuple<Bank, List<Vault<IStoreable>>> currentBankAndVault = banksAndVaults.get(i);
+
+			Bank currentBank = currentBankAndVault.first;
+			List<Vault<IStoreable>> currentVault = currentBankAndVault.second;
+
+			currentBank.addVault(null);
+
+			for (int j = 0; j < currentVault.size(); j++) {
+				Vault<IStoreable> currentVaultElement = currentVault.get(j);
+
+			}
+		}
+	}
+
 	Tuple<Bank, List<Vault<IStoreable>>> findBankTuple(Bank bankToFind) {
-		// TODO
+		for (Tuple<Bank, List<Vault<IStoreable>>> currentBankAndVault : banksAndVaults) {
+			if (currentBankAndVault.first.equals(bankToFind)) {
+				return currentBankAndVault;
+			}
+		}
+
 		return null;
 	}
 	
@@ -35,7 +56,20 @@ public class VaultingManager {
 	}
 	
 	public boolean removeValueFromBankVault(Bank bankToFind, long vaultID, int valueToRemove) {
-		// TODO
+		Tuple<Bank, List<Vault<IStoreable>>> currentBankAndVault = findBankTuple(bankToFind);
+
+		if (currentBankAndVault == null) {
+			return false;
+		}
+
+		for (Vault<IStoreable> vault : currentBankAndVault.second) {
+			if (vault.getID() == vaultID) {
+				int oldValue = vault.getValue();
+				int newValue = vault.removeValue(valueToRemove);
+				return newValue != oldValue;
+			}
+		}
+
 		return false;
 	}
 	
