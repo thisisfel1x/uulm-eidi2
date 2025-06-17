@@ -1,4 +1,4 @@
-package eidi2.sose25.weber.felix.sheet06.material.ex02;
+package eidi2.sose25.weber.felix.sheet06.ex02;
 
 public class Pair<F, S> {
 	F first;

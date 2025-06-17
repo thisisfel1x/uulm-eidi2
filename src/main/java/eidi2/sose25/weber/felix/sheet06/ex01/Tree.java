@@ -1,4 +1,4 @@
-package eidi2.sose25.weber.felix.sheet06.material.ex01;
+package eidi2.sose25.weber.felix.sheet06.ex01;
 
 public interface Tree<T> {
 
