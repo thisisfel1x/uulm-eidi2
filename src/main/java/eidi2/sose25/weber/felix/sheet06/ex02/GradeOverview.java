@@ -7,21 +7,26 @@ public class GradeOverview {
 	private final HashMap<String, Pair<Double, Integer>> GRADEOVERVIEW = new HashMap<>();
 	
 	public void addTestResult(String lectureName, Pair<Double, Integer> gradeAndECTS) {
-		// ToDo a)
+		this.GRADEOVERVIEW.put(lectureName, gradeAndECTS);
 	}
 	
 	public int currentECTS() {
-		// ToDo b)
-		return 0;
+		return this.GRADEOVERVIEW.values().stream().mapToInt(value -> value.second).sum();
 	}
 	
 	public Optional<Pair<Double, Integer>> getExamResult(String lectureName) {
-		// ToDo c)
-		return Optional.empty();
+		return Optional.ofNullable(this.GRADEOVERVIEW.get(lectureName));
 	}
 	
 	public double totalGradeAverage() {
-		// ToDo d)
-		return 0;
+		int totalECTS = 0;
+		double weightedSum = 0.0;
+
+		for (Pair<Double, Integer> entry : this.GRADEOVERVIEW.values()) {
+			weightedSum += entry.first * entry.second;
+			totalECTS += entry.second;
+		}
+
+		return totalECTS > 0 ? weightedSum / totalECTS : 0.0;
 	}
 }
