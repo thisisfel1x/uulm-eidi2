@@ -8,6 +8,10 @@ public class Tiger extends AAnimal {
 		super(legCount, sex);
 	}
 
+	public void eat() {
+
+	}
+
 	@Override
 	public String toString() {
 		return "Tiger [legCount=" + legCount + ", sex=" + sex + "]";

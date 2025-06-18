@@ -2,6 +2,7 @@ package eidi2.sose25.weber.felix.lesson.zulassungsklausur.examD.group03;
 
 import eidi2.sose25.weber.felix.lesson.zulassungsklausur.examD.group03.animal.AAnimal;
 import eidi2.sose25.weber.felix.lesson.zulassungsklausur.examD.group03.animal.CanFly;
+import eidi2.sose25.weber.felix.lesson.zulassungsklausur.examD.group03.animal.Raven;
 import eidi2.sose25.weber.felix.lesson.zulassungsklausur.examD.group03.animal.Tiger;
 
 import java.util.ArrayList;
@@ -9,56 +10,54 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Zoo {
-	HashMap<Trainer<AAnimal>, List<Enclosure<AAnimal>>> trainings = new HashMap<>();;
-	
-	public <T extends AAnimal> void addEnclosureForTrainer(Trainer<T> trainer, Enclosure<T> enclosureToAdd) {
+    HashMap<Trainer<AAnimal>, List<Enclosure<AAnimal>>> trainings = new HashMap<>();
+
+    public <T extends AAnimal> void addEnclosureForTrainer(Trainer<AAnimal> trainer, Enclosure<AAnimal> enclosureToAdd) {
         if (enclosureToAdd == null) {
-            throw new IllegalArgumentException("Enclosure cannot be null");
+            throw new IllegalArgumentException("enclosureToAdd cannot be null");
         }
 
-        if (!trainings.containsKey(trainer)) {
-            trainings.put((Trainer<AAnimal>) trainer, new ArrayList<>());
+        if (!this.trainings.containsKey(trainer)) {
+            this.trainings.put(trainer, new ArrayList<>());
         }
 
-        // Gehege der Liste hinzufügen
-        List<Enclosure<AAnimal>> enclosures = trainings.get(trainer);
-        enclosures.add((Enclosure<AAnimal>) enclosureToAdd);
+        List<Enclosure<AAnimal>> trainerEnclosures = this.trainings.get(trainer);
+        trainerEnclosures.add(enclosureToAdd);
 
-	}
-	
-	public <T extends AAnimal & CanFly> int countLegsOnGroundInAllEnclosures(Trainer<T> trainer) {
+    }
+
+    public <T extends AAnimal & CanFly> int countLegsOnGroundInAllEnclosures(Trainer<T> trainer) {
         int totalLegs = 0;
 
-        List<Enclosure<AAnimal>> enclosuresToTrainer = this.trainings.get(trainer);
-        if (enclosuresToTrainer == null) {
+        List<Enclosure<AAnimal>> trainerEnclosures = this.trainings.get(trainer);
+        if (trainerEnclosures == null) {
             return 0;
         }
 
-        for (Enclosure<AAnimal> enclosure : enclosuresToTrainer) {
+        for (Enclosure<AAnimal> enclosure : trainerEnclosures) {
             for (AAnimal animal : enclosure.animals) {
-                if (animal instanceof CanFly canFly) {
-                    if (!canFly.isAirborne()) {
-                        totalLegs += animal.getLegCount();
+                if (animal instanceof Raven raven) {
+                    if (!raven.isAirborne()) {
+                        totalLegs += raven.getLegCount();
                     }
                 }
             }
         }
 
         return totalLegs;
+    }
 
-	}
-	
-	public void gutAllTigers() {
-        for (List<Enclosure<AAnimal>> enclosures : this.trainings.values()) {
-            for (Enclosure<AAnimal> animalEnclosure : enclosures) {
-                for (AAnimal animal : animalEnclosure.animals) {
+    public void gutAllTigers() {
+        for (List<Enclosure<AAnimal>> enclosureToTrainer : this.trainings.values()) {
+            for (Enclosure<AAnimal> enclosure : enclosureToTrainer) {
+                for (AAnimal animal : enclosure.animals) {
                     if (animal instanceof Tiger tiger) {
-                        tiger.setLegCount(0);
+                        animal.setLegCount(0);
                     }
                 }
             }
         }
-	}
+    }
 
     @Override
     public String toString() {

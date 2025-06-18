@@ -11,6 +11,13 @@ public class GradeOverview {
 	}
 	
 	public int currentECTS() {
+		int totalEcts = 0;
+
+		for (Pair<Double, Integer> value : this.GRADEOVERVIEW.values()) {
+			totalEcts += value.second;
+		}
+
+
 		return this.GRADEOVERVIEW.values().stream().mapToInt(value -> value.second).sum();
 	}
 	
