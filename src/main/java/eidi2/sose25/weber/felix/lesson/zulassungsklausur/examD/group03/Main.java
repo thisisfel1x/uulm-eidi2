@@ -24,8 +24,8 @@ public class Main {
 		ravenEnc.addAnimal(r1);
 		ravenEnc.addAnimal(r2);
 		
-		zoo.addEnclosureForTrainer(greg, tigerEnc);
-		zoo.addEnclosureForTrainer(amelie, ravenEnc);
+		//zoo.addEnclosureForTrainer(greg, tigerEnc);
+		//zoo.addEnclosureForTrainer(amelie, ravenEnc);
 		
 		System.out.println("raven legs ammelie:");
 		System.out.println(zoo.countLegsOnGroundInAllEnclosures(amelie));

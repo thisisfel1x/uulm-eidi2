@@ -1,5 +1,6 @@
 package eidi2.sose25.weber.felix.lesson.zulassungsklausur.examWithUML.group01;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,8 +28,21 @@ public class Tournament {
      * Die Methode erzeugt 2 Spiele für jeden Spieler gegen jeden Spieler und liefert diese in einer Liste zurück.
      */
     //TODO: Aufgabe 2
-    List<Game> createTournamentGames() {
-        return null;
+    public List<Game> createTournamentGames() {
+        List<Game> games = new ArrayList<>();
+        List<Player> playerList = new ArrayList<>(this.players.values());
+
+        for (int i = 0; i < playerList.size(); i++) {
+            for (int j = i + 1; j < playerList.size(); j++) {
+                Player p1 = playerList.get(i);
+                Player p2 = playerList.get(j);
+                games.add(new Game(p1, p2));
+                games.add(new Game(p2, p1));
+            }
+        }
+
+
+        return games;
     }
 
     /**
@@ -40,7 +54,15 @@ public class Tournament {
      */
     //TODO: Aufgabe 3
     public List<RankingElement> computeRanking() {
-        return null;
+        List<RankingElement> rankingList = new ArrayList<>();
+
+        for (Player player : this.players.values()) {
+            rankingList.add(new RankingElement(player.getName(), player.getWins()));
+        }
+
+        rankingList.sort((r1, r2) -> Integer.compare(r2.getWins(), r1.getWins()));
+
+        return rankingList;
     }
 
     /**
