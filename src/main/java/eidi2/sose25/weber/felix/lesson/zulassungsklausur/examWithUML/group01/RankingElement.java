@@ -2,7 +2,6 @@ package eidi2.sose25.weber.felix.lesson.zulassungsklausur.examWithUML.group01;
 
 //TODO: Aufgabe 1
 public class RankingElement {
-
     private String name;
     private int wins;
 
@@ -12,7 +11,7 @@ public class RankingElement {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {
@@ -20,7 +19,7 @@ public class RankingElement {
     }
 
     public int getWins() {
-        return this.wins;
+        return wins;
     }
 
     public void setWins(int wins) {

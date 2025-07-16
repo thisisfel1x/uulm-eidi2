@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class FloatRegexTest {
 
     public static void main(String[] args) {
-        String regex = "([1-9][0-9]*|0)\\.(0|[0-9]*[1-9])";
+        String regex = "([1-9][0-9]*|0)\\.(0|[0-9]*[1-9])"; // 0,90
         Pattern pattern = Pattern.compile(regex);
 
         String[] validNumbers = {

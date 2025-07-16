@@ -1,9 +1,6 @@
 package eidi2.sose25.weber.felix.lesson.zulassungsklausur.examWithUML.group01;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public class Tournament {
@@ -29,20 +26,20 @@ public class Tournament {
      */
     //TODO: Aufgabe 2
     public List<Game> createTournamentGames() {
-        List<Game> games = new ArrayList<>();
-        List<Player> playerList = new ArrayList<>(this.players.values());
+        List<Game> currentGames = new ArrayList<>();
+        List<Player> currentPlayers = new ArrayList<>(players.values());
 
-        for (int i = 0; i < playerList.size(); i++) {
-            for (int j = i + 1; j < playerList.size(); j++) {
-                Player p1 = playerList.get(i);
-                Player p2 = playerList.get(j);
-                games.add(new Game(p1, p2));
-                games.add(new Game(p2, p1));
+        for (int i = 0; i < currentPlayers.size(); i++) {
+            for (int j = i + 1; j < currentPlayers.size(); j++) {
+                Player p1 = currentPlayers.get(i);
+                Player p2 = currentPlayers.get(j);
+
+                currentGames.add(new Game(p1, p2));
+                currentGames.add(new Game(p2, p1));
             }
         }
 
-
-        return games;
+        return currentGames;
     }
 
     /**
@@ -54,15 +51,26 @@ public class Tournament {
      */
     //TODO: Aufgabe 3
     public List<RankingElement> computeRanking() {
-        List<RankingElement> rankingList = new ArrayList<>();
+        List<RankingElement> rankingElements = new ArrayList<>();
 
-        for (Player player : this.players.values()) {
-            rankingList.add(new RankingElement(player.getName(), player.getWins()));
+        for (Player player : players.values()) {
+            rankingElements.add(new RankingElement(player.getName(), player.getWins()));
         }
 
-        rankingList.sort((r1, r2) -> Integer.compare(r2.getWins(), r1.getWins()));
+        rankingElements.sort(new Comparator<RankingElement>() {
+            @Override
+            public int compare(RankingElement o1, RankingElement o2) {
+                if (o1.getWins() > o2.getWins()) {
+                    return 1;
+                } else if (o1.getWins() < o2.getWins()) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+        });
 
-        return rankingList;
+        return null;
     }
 
     /**
